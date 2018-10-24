@@ -40,17 +40,19 @@
       - archives
       - temp
   - name: rvm update
-    shell: .rvm/bin/rvm && rvm get stable --auto-dotfiles
+    shell: . .rvm/scripts/rvm && rvm get stable --auto-dotfiles
   - name: remove ruby
-    shell: .rvm/bin/rvm && rvm remove ruby 2.5.1
+    shell: . .rvm/scripts/rvm && rvm remove ruby 2.5.1
   - name: install ruby
-    shell: .rvm/bin/rvm && rvm install ruby 2.5.3
+    shell: . .rvm/scripts/rvm && rvm install ruby 2.5.3
+  - name: set default ruby
+    shell: . .rvm/scripts/rvm && rvm alias create default ruby-2.5.3
   - name: reload rvm
-    shell: .rvm/bin/rvm && rvm reload
+    shell: . .rvm/scripts/rvm && rvm reload
   - name: use rvm
-    shell: .rvm/bin/rvm && rvm use ruby
+    shell: . .rvm/scripts/rvm && rvm use ruby-2.5.3
   - name: install rails
-    shell: .rvm/bin/rvm && gem install rails
+    shell: . .rvm/scripts/rvm && gem install rails
   - name: ifdown
     become: yes
     become_method: sudo
