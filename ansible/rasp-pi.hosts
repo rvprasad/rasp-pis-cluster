@@ -1,0 +1,13 @@
+all:
+  children:
+    all_raspi:
+      hosts:
+        192.168.2.[10:15]:
+      vars: 
+        ansible_shell_executable: /bin/bash
+    master_raspi:
+      hosts:
+        192.168.2.10:
+    worker_raspi:
+      hosts:
+        192.168.2.[10:15]:

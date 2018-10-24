@@ -1,0 +1,2 @@
+hdmi_safe=1
+enable_uart=0

@@ -1,0 +1,60 @@
+#cloud-config
+# vim: syntax=yaml
+#
+hostname: master10
+manage_etc_hosts: true
+apt_preserve_sources_list: true
+
+users:
+  - name: life
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    groups: users,docker
+    plain_text_passwd: asdf
+    lock_passwd: false
+    ssh_pwauth: true
+    chpasswd: { expire: false }
+
+package_upgrade: false
+
+write_files:
+  - content: |
+      iface eth0 inet static
+      address 192.168.2.10
+      netmask 255.255.255.0
+      network 192.168.2.0
+      broadcast 192.168.2.255
+    path: /etc/network/interfaces.d/eth0 
+  - content: |
+      allow-hotplug wlan0
+      iface wlan0 inet dhcp
+      wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+      iface default inet dhcp 
+    path: /etc/network/interfaces.d/wlan0 
+  - content: |
+      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+      update_config=1
+      network={
+      ssid="NetworkSSID"
+      psk="NetworkPassword"
+      proto=RSN
+      key_mgmt=WPA-PSK
+      pairwise=CCMP
+      auth_alg=OPEN
+      }
+    path: /etc/wpa_supplicant/wpa_supplicant.conf
+  - content: |
+      #!/bin/sh -e
+      exec 2> /tmp/rc.local.log
+      exec 1>&2
+      set -x
+      systemctl restart avahi-daemon
+      timedatectl set-timezone America/Chicago
+      ifup eth0
+      ip link set wlan0 down
+      exit 0
+    path: /etc/rc.local
+    permissions: '0755'
+
+runcmd:
+  - '/etc/rc.local'

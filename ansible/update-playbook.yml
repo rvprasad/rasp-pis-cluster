@@ -1,0 +1,57 @@
+- hosts: all_raspi
+  remote_user: life
+  tasks:
+  - name: ifup
+    become: yes
+    become_method: sudo
+    shell: ip link set wlan0 up && sleep 10
+  - name: apt update
+    become: yes
+    become_method: sudo
+    apt: 
+      update_cache: yes 
+      state: latest
+      autoremove: yes
+  - name: pip
+    command: pip3 install -U django flask
+  - name: sdk self selfupdate
+    shell: . ~/.sdkman/bin/sdkman-init.sh && sdk selfupdate
+  - name: sdk uninstall 
+    shell: . ~/.sdkman/bin/sdkman-init.sh && sdk uninstall {{ item }}
+    with_list:
+      - groovy 2.5.2
+      - kotlin 1.2.61
+      - kscript 2.4.5
+      - micronaut 1.0.0.M4
+      - scala 2.12.6
+      - vertx 3.5.3
+  - name: sdk install 
+    shell: . ~/.sdkman/bin/sdkman-init.sh && sdk install {{ item }}
+    with_list:
+      - groovy
+      - kotlin
+      - kscript
+      - micronaut
+      - scala
+      - vertx
+  - name: sdk flush 
+    shell: . ~/.sdkman/bin/sdkman-init.sh && sdk flush {{ item }}
+    with_list:
+      - archives
+      - temp
+  - name: rvm update
+    shell: .rvm/bin/rvm && rvm get stable --auto-dotfiles
+  - name: remove ruby
+    shell: .rvm/bin/rvm && rvm remove ruby 2.5.1
+  - name: install ruby
+    shell: .rvm/bin/rvm && rvm install ruby 2.5.3
+  - name: reload rvm
+    shell: .rvm/bin/rvm && rvm reload
+  - name: use rvm
+    shell: .rvm/bin/rvm && rvm use ruby
+  - name: install rails
+    shell: .rvm/bin/rvm && gem install rails
+  - name: ifdown
+    become: yes
+    become_method: sudo
+    shell: ip link set wlan0 down && sleep 10
