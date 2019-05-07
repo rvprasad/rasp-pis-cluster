@@ -1,0 +1,23 @@
+- hosts: all_raspi
+  remote_user: life
+  tasks:
+  - name: ifup
+    become: yes
+    become_method: sudo
+    shell: ip link set wlan0 up && sleep 10
+  - name: rvm update
+    shell: |
+      . .rvm/scripts/rvm 
+      rvm get stable --auto-dotfiles
+      rvm remove ruby 2.5.3
+      rvm install ruby 2.6.2
+      rvm alias create default ruby-2.6.2
+      rvm reload
+      rvm use ruby-2.6.2
+      gem install rails
+      rvm docs generate-ri
+      exit 0
+  - name: ifdown
+    become: yes
+    become_method: sudo
+    shell: ip link set wlan0 down && sleep 10

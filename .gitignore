@@ -1,3 +1,4 @@
+cloud-init-yamls/*.txt
 *.img
 *.zip
 *.retry
