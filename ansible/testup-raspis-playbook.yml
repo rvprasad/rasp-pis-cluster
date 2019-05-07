@@ -1,0 +1,9 @@
+- hosts: all_raspi
+  remote_user: life
+  tasks:
+    - name: Test Up
+      shell: echo "$(hostname) is up"
+      register: out
+
+    - debug: msg="{{ out.stdout_lines }}"
+
