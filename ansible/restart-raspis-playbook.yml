@@ -1,0 +1,8 @@
+- hosts: all_raspi
+  remote_user: life
+  tasks:
+  - name: shutdown
+    become: yes
+    become_method: sudo
+    command: shutdown -r now
+
