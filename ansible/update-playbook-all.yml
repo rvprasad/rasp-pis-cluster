@@ -50,6 +50,7 @@
       rvm reload
       rvm use ruby-2.6.2
       gem install rails
+      exit 0
   - name: ifdown
     become: yes
     become_method: sudo
