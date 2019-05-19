@@ -1,0 +1,6 @@
+- hosts: all_raspi
+  remote_user: life
+  serial: 2
+  tasks:
+  - name: pip
+    command: pip3 install -U django flask cyclone tornado twisted

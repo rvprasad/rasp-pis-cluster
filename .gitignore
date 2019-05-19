@@ -1,4 +1,4 @@
-cloud-init-yamls/*.txt
+rasppi-init-config/*.txt
 *.img
 *.zip
 *.retry

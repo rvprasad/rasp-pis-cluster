@@ -1,10 +1,7 @@
 - hosts: all_raspi
   remote_user: life
+  serial: 2
   tasks:
-  - name: ifup
-    become: yes
-    become_method: sudo
-    shell: ip link set wlan0 up && sleep 10
   - name: rvm update
     shell: |
       . .rvm/scripts/rvm 
@@ -17,7 +14,3 @@
       gem install rails
       rvm docs generate-ri
       exit 0
-  - name: ifdown
-    become: yes
-    become_method: sudo
-    shell: ip link set wlan0 down && sleep 10
