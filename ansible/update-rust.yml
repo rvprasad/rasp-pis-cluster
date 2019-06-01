@@ -1,0 +1,6 @@
+- hosts: all_raspi
+  remote_user: life
+  serial: 2
+  tasks:
+  - name: rustup
+    command: ~/.cargo/bin/rustup update

@@ -1,0 +1,10 @@
+- hosts: all_raspi
+  remote_user: life
+  tasks:
+    - name: Test Up
+      become: yes
+      become_method: sudo
+      command: systemctl stop {{ item }}
+      loop: 
+        - nginx
+

@@ -6,11 +6,11 @@
     shell: |
       . .rvm/scripts/rvm 
       rvm get stable --auto-dotfiles
-      rvm remove ruby 2.5.3
-      rvm install ruby 2.6.2
-      rvm alias create default ruby-2.6.2
+      rvm remove ruby 2.6.2
+      rvm install ruby 2.6.3
+      rvm alias create default ruby-2.6.3
       rvm reload
-      rvm use ruby-2.6.2
+      rvm use ruby-2.6.3
       gem install rails
       rvm docs generate-ri
       exit 0

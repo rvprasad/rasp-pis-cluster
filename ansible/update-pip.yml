@@ -2,5 +2,17 @@
   remote_user: life
   serial: 2
   tasks:
-  - name: pip
-    command: pip3 install -U django flask cyclone tornado twisted
+  - name: pip2
+    become: yes
+    become_method: sudo 
+    command: pip2 install -U {{ item }}
+    loop: 
+      - pip
+      - requests
+  - name: pip3
+    become: yes
+    become_method: sudo 
+    command: pip3 install -U {{ item }}
+    loop: 
+      - pip
+      - requests
