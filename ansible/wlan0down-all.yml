@@ -1,7 +1,7 @@
 - hosts: all_raspi
   remote_user: life
   tasks:
-  - name: ifdown
+  - name: wlan0down
     become: yes
     become_method: sudo
     shell: ip link set wlan0 down && sleep 10
