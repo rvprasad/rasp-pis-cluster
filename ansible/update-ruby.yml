@@ -11,6 +11,7 @@
       rvm alias create default ruby-2.6.3
       rvm reload
       rvm use ruby-2.6.3
+      gem update --system
       gem install rails
       rvm docs generate-ri
       exit 0
