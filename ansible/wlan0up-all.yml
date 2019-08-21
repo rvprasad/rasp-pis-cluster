@@ -5,3 +5,9 @@
     become: yes
     become_method: sudo
     shell: ip link set wlan0 up && sleep 10
+  - name: sync clock
+    become: yes
+    become_method: sudo
+    systemd: 
+      name: ntp
+      state: restarted
