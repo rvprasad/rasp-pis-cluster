@@ -4,7 +4,9 @@
     - name: Test Up
       become: yes
       become_method: sudo
-      command: systemctl stop {{ item }}
+      systemd:
+        name: "{{ item }}"
+        state: stopped
       loop: 
         - nginx
 
