@@ -1,0 +1,11 @@
+session_name: rasp-pis
+windows:
+- window_name: ssh-logins
+  layout: tiled
+  panes:
+    - ssh life@master10
+    - ssh life@worker11
+    - ssh life@worker12
+    - ssh life@worker13
+    - ssh life@worker14
+    - ssh life@worker15
