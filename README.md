@@ -1,4 +1,4 @@
-This repository contains code to set up a cluster of raspberry pis.  The description of the design choices and set up process is available [here](https://bitbucket.org/rvprasad/rasp-pis-cluster/src/master/).
+This repository contains code to set up a cluster of raspberry pis.  The description of the design choices and set up process is available [here](https://medium.com/@rvprasad/setting-up-a-raspberry-pi-cluster-2c40cd8e09d6).
 
 ## Attribution
 
