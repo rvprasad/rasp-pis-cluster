@@ -10,4 +10,6 @@ for i in `seq 1 5` ; do
   scp helper-scripts/install-packages.sh $k:bin/
   scp helper-scripts/wlan0-up.sh $k:bin/
   scp helper-scripts/wlan0-down.sh $k:bin/
+  ssh $k "mkdir .sdkman/etc"
+  scp configs/sdkman_config $k:.sdkman/etc/sdkman_config
 done

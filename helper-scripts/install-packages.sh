@@ -14,6 +14,8 @@ sudo apt install -y unzip zip gnupg2 dirmngr
 
 curl -s "https://get.sdkman.io" | bash
 . ~/.sdkman/bin/sdkman-init.sh
+cat ~/.sdkman/etc/config | grep -v auto > ~/.sdkman/etc/_temp
+cat ~/.sdkman/etc/{sdkman_config,_temp} > ~/.sdkman/etc/config
 sdk install groovy
 sdk install kotlin
 sdk install kscript
