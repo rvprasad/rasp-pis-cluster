@@ -2,13 +2,6 @@
   remote_user: life
   serial: 2
   tasks:
-  - name: pip2
-    become: yes
-    become_method: sudo 
-    command: pip2 install -U {{ item }}
-    loop: 
-      - pip
-      - requests
   - name: pip3
     become: yes
     become_method: sudo 
@@ -16,3 +9,5 @@
     loop: 
       - pip
       - requests
+      - mpi4py
+      - virtualenv
