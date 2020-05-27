@@ -7,24 +7,18 @@
   - name: sdk uninstall
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk uninstall {{ item }}
     with_list:
-      - groovy 3.0.0
-      - jbang 0.15.1
-      - kotlin 1.3.61
-      - leiningen 2.9.0
-      - micronaut 1.3.1
-      - scala 2.13.1
-      - vertx 3.8.5
+      - groovy 3.0.3
+      - jbang 0.22.0.2
+      - spark 2.4.4
+      - vertx 3.9.0
     ignore_errors: True
   - name: sdk install
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk install {{ item }}
     with_list:
-      - groovy 3.0.3
-      - jbang 0.22.0.2
-      - kotlin 1.3.72
-      - leiningen 2.9.3-1
-      - micronaut 1.3.5
-      - scala 2.13.2
-      - vertx 3.9.0
+      - groovy 3.0.4
+      - jbang 0.24.0
+      - spark 2.4.5
+      - vertx 3.9.1
     ignore_errors: True
   - name: sdk flush
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk flush {{ item }}
