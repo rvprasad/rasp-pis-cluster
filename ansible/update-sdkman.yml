@@ -7,18 +7,12 @@
   - name: sdk uninstall
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk uninstall {{ item }}
     with_list:
-      - groovy 3.0.3
-      - jbang 0.22.0.2
-      - spark 2.4.4
-      - vertx 3.9.0
+      - jbang 0.24.0
     ignore_errors: True
   - name: sdk install
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk install {{ item }}
     with_list:
-      - groovy 3.0.4
-      - jbang 0.24.0
-      - spark 2.4.5
-      - vertx 3.9.1
+      - jbang 0.25.0
     ignore_errors: True
   - name: sdk flush
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk flush {{ item }}
