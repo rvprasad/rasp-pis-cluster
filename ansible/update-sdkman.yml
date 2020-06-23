@@ -7,12 +7,14 @@
   - name: sdk uninstall
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk uninstall {{ item }}
     with_list:
-      - jbang 0.24.0
+      - jbang 0.26.0
+      - spark 2.4.5
     ignore_errors: True
   - name: sdk install
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk install {{ item }}
     with_list:
-      - jbang 0.25.0
+      - jbang 0.32.0
+      - spark 2.4.6
     ignore_errors: True
   - name: sdk flush
     shell: . ~/.sdkman/bin/sdkman-init.sh && sdk flush {{ item }}
