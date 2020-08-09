@@ -1,16 +1,16 @@
 - hosts: all_raspi
   remote_user: life
-  serial: 2
+  serial: 3
   tasks:
   - name: rvm update
     shell: |
       . .rvm/scripts/rvm 
       rvm get stable --auto-dotfiles
-      rvm remove ruby 2.6.2
-      rvm install ruby 2.7.0
-      rvm alias create default ruby-2.7.0
+      rvm remove ruby 2.7.0
+      rvm install ruby 2.7.1
+      rvm alias create default ruby-2.7.1
       rvm reload
-      rvm use ruby-2.7.0
+      rvm use ruby-2.7.1
       gem update --system
       gem install rails
       rvm docs generate-ri

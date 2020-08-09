@@ -1,6 +1,6 @@
 - hosts: all_raspi
   remote_user: life
-  serial: 2
+  serial: 3
   tasks:
   - name: pip3
     become: yes
@@ -8,6 +8,14 @@
     command: pip3 install -U {{ item }}
     loop: 
       - pip
-      - requests
+      - Cython
+      - beautifulsoup4
+      - fastapi
       - mpi4py
+      - pandas
+      - ptpython
+      - requests
+      - simplejson
+      - sympy
       - virtualenv
+
